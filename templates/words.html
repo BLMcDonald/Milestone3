@@ -1,11 +1,13 @@
-<html>
-    <head>
-        
-    </head>
-    <body>
+{% extends 'base.html'%}
+{% block content %}
+    
+    <ul class="collapsible" data-collapsible="accordion">
         {% for word in words %}
-            {{word.word_name}}
-            {{word.definition}}
+        <li>
+            <div class="collapsible-header"><i class="material-icons">expand_more</i><strong>{{word.word_name}}</strong></div>
+            <div class="collapsible-body"><span>{{word.definition}}</span></div>
+        </li>
         {% endfor %}
-    </body>
-</html>
+    </ul>
+
+{% endblock %}
