@@ -30,6 +30,16 @@ def insert_word():
 def edit_word(word_id):
     the_word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
     return render_template("editword.html", word=the_word)
+    
+@app.route('/update_word/<word_id>', methods=["POST"])
+def update_word(word_id):
+    words = mongo.db.words
+    words.update({'_id': ObjectId(word_id)},
+    {
+        'word_name':request.form.get('word_name'),
+        'definition':request.form.get('definition')
+    })
+    return redirect(url_for('get_words'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
