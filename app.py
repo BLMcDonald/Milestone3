@@ -40,6 +40,11 @@ def update_word(word_id):
         'definition':request.form.get('definition')
     })
     return redirect(url_for('get_words'))
+    
+@app.route('/delete_word/<word_id>')
+def delete_word(word_id):
+    mongo.db.words.remove({'_id': ObjectId(word_id)})
+    return redirect(url_for('get_words'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
