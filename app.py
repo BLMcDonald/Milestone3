@@ -16,6 +16,15 @@ mongo = PyMongo(app)
 def get_words():
     return render_template("words.html", words=mongo.db.words.find())
 
+@app.route('/add_word')
+def add_word():
+    return render_template("addword.html")
+    
+@app.route('/insert_word', methods=['POST'])
+def insert_word():
+    words = mongo.db.words
+    words.insert_one(request.form.to_dict())
+    return redirect(url_for('get_words'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

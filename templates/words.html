@@ -4,7 +4,17 @@
     <ul class="collapsible" data-collapsible="accordion">
         {% for word in words %}
         <li>
-            <div class="collapsible-header"><i class="material-icons">expand_more</i><strong>{{word.word_name}}</strong></div>
+            <div class="collapsible-header">
+                <div class="col s3">
+                    <i class="material-icons">expand_more</i>
+                    <a class="waves-effect waves-light btn btn_custom red">Delete</a>
+                    <a class="waves-effect waves-light btn btn_custom blue">Edit</a>
+                </div>
+                <div class="col s9">
+                    <strong>{{word.word_name}}</strong>
+                </div>
+                
+            </div>
             <div class="collapsible-body"><span>{{word.definition}}</span></div>
         </li>
         {% endfor %}
