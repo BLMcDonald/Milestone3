@@ -25,6 +25,11 @@ def insert_word():
     words = mongo.db.words
     words.insert_one(request.form.to_dict())
     return redirect(url_for('get_words'))
+    
+@app.route('edit_word/<word_id>')
+def edit_word(word_id):
+    the_word = mongo.db.words.find_one({"_id": ObjectId(word_id)})
+    return render_template("editword.html", word=the_word)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
