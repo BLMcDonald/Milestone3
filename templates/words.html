@@ -4,13 +4,13 @@
     <ul class="collapsible" data-collapsible="accordion">
         {% for word in words %}
         <li>
-            <div class="collapsible-header word_header">
+            <div class="collapsible-header">
                 <div class="col s3">
                     <i class="material-icons">expand_more</i>
                     <a href="{{url_for('delete_word', word_id=word._id)}}" class="waves-effect waves-light btn btn_custom red">Delete</a>
                     <a href="{{url_for('edit_word', word_id=word._id)}}" class="waves-effect waves-light btn btn_custom blue">Edit</a>
                 </div>
-                <div class="col s9">
+                <div class="col s9 word_header">
                     <strong>{{word.word_name}}</strong>
                 </div>
                 
